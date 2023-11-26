@@ -1,0 +1,21 @@
+{
+  "name": "url_dataset_creator",
+  "version": "1.0.0",
+  "description": "Node.js app to create a dataset of URLs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "dataset",
+    "URLs",
+    "web scraping",
+    "data collection"
+  ],
+  "author": "Malay Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
