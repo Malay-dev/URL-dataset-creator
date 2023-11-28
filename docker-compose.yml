@@ -1,0 +1,28 @@
+version: '3'
+services:
+  url-dataset-creator-app:
+    build: 
+      context: .
+      args:
+        - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - ./.env
+    depends_on:
+      - rabbitmq
+  
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
+      - "15672:15672" 
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=example
+      - RABBITMQ_DEFAULT_VHOST=wifihost   
