@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon -L index.js",
+    "start": "node --no-deprecation index.js",
+    "dev": "nodemon --no-deprecation -L index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
