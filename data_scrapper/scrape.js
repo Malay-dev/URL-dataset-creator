@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
 
 import extract_url_parts from "./extract_url_parts.js";
+import { send_to_queue } from "../controllers/store_data.js";
 
 const browser = await puppeteer.launch({
   args: ["--no-sandbox"],
@@ -20,7 +21,7 @@ const is_valid = (link) => {
   }
 };
 
-const browse = async (url) => {
+const browse = async (url) => { 
   const page = await browser.newPage();
   await page.goto(url);
 
@@ -36,7 +37,8 @@ const browse = async (url) => {
   for (const link of links) {
     if (!found_links.includes(link) && is_valid(link)) {
       found_links.push(link);
-      console.log(extract_url_parts(link));
+      const response = send_to_queue(extract_url_parts(link));
+      console.log(response);
       await browse(link);
     }
   }

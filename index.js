@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import { connect_to_rabbit_mq } from "./utility/message_queue.js";
+import browse_router from "./controllers/browse_link.js";
 
 dotenv.config();
 
@@ -41,6 +42,8 @@ const connect_to_database = () => {
 };
 connect_to_database();
 connect_to_rabbit_mq();
+
+app.use("/browse", browse_router);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
