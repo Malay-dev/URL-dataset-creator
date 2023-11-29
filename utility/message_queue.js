@@ -6,7 +6,7 @@ const RABBTI_MQ_IP = process.env.RABBTI_MQ_IP || "rabbitmq";
 const RABBTI_MQ_VHOST = process.env.RABBTI_MQ_VHOST || "wifihost";
 
 const RABBIT_MQ_URL = `amqp://${RABBIT_MQ_USER}:${RABBIT_MQ_PASSWORD}@${RABBTI_MQ_IP}:5672/${RABBTI_MQ_VHOST}`;
-const QUEUE_NAME = "log_queue";
+const QUEUE_NAME = "url_queue";
 
 let rabbit_mq_channel;
 let start_time;

@@ -3,13 +3,13 @@ import puppeteer from "puppeteer";
 import extract_url_parts from "./extract_url_parts.js";
 
 const browser = await puppeteer.launch({
+  args: ["--no-sandbox"],
   headless: "new",
   defaultViewport: null,
   userDataDir: "./tmp",
 });
 
 let found_links = [];
-let url_data = [];
 
 const is_valid = (link) => {
   try {
@@ -33,14 +33,13 @@ const browse = async (url) => {
     return anchors.map((anchor) => anchor.href.trim());
   });
 
-  console.log(`Links found at ${url}:`);
-  console.log(links);
   for (const link of links) {
     if (!found_links.includes(link) && is_valid(link)) {
       found_links.push(link);
-      url_data.push(extract_url_parts(link));
+      console.log(extract_url_parts(link));
       await browse(link);
     }
-    console.log(url_data);
   }
 };
+
+export { browse };
