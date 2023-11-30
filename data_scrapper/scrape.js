@@ -21,26 +21,39 @@ const is_valid = (link) => {
   }
 };
 
-const browse = async (url) => { 
-  const page = await browser.newPage();
-  await page.goto(url);
+const browse = async (url) => {
+  try {
+    const page = await browser.newPage();
+    await page.goto(url);
 
-  // Wait for the page to load completely
-  await page.waitForSelector("a");
+    await page.waitForSelector("a");
 
-  // Extracting links from the page
-  const links = await page.evaluate(() => {
-    const anchors = Array.from(document.querySelectorAll("a"));
-    return anchors.map((anchor) => anchor.href.trim());
-  });
+    // Extracting links from the page
+    const links = await page.evaluate(() => {
+      const anchors = Array.from(document.querySelectorAll("a"));
+      return anchors.map((anchor) => anchor.href.trim());
+    });
 
-  for (const link of links) {
-    if (!found_links.includes(link) && is_valid(link)) {
-      found_links.push(link);
-      const response = send_to_queue(extract_url_parts(link));
-      console.log(response);
-      await browse(link);
+    for (const link of links) {
+      if (!found_links.includes(link) && is_valid(link)) {
+        found_links.push(link);
+        const response = send_to_queue(extract_url_parts(link));
+        console.log(response);
+        await browse(link);
+      }
+      await new Promise((resolve) => setTimeout(resolve, 2000));
     }
+    await browser.close();
+    return {
+      status: "success",
+      message: "Completed crawling through this page...",
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: "failed",
+      message: error,
+    };
   }
 };
 

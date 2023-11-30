@@ -33,7 +33,7 @@ const send_to_queue = async (url_data) => {
     const metadata = {
       top_country_shares: res_data?.TopCountryShares,
       location: res_data?.CountryRank?.CountryCode,
-      global_index: res_data?.GlobalRank,
+      global_index: res_data?.GlobalRank?.Rank,
       local_index: res_data?.CountryRank?.Rank,
       category_rank: res_data?.CategoryRank,
       category: res_data?.Category,
