@@ -2,8 +2,8 @@ const extract_url_parts = (url) => {
   const urlObject = new URL(url);
   const protocol = urlObject.protocol;
   const domain_name = urlObject.hostname;
-  const path = urlObject.pathname;
-  const fragments = urlObject.hash;
+  const paths = [urlObject.pathname];
+  const fragments = [urlObject.hash];
 
   // Extract parameters
   const params = {};
@@ -19,7 +19,7 @@ const extract_url_parts = (url) => {
   return {
     protocol,
     domain_name,
-    path,
+    paths,
     parameters,
     fragments,
   };
