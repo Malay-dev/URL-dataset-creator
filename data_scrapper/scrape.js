@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 
 import extract_url_parts from "./extract_url_parts.js";
-import { send_to_queue } from "../controllers/store_data.js";
+import { send_to_queue } from "../controllers/send_data.js";
 
 const browser = await puppeteer.launch({
   args: ["--no-sandbox"],
