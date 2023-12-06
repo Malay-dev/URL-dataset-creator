@@ -42,7 +42,7 @@ const send_to_queue = async (url_data) => {
       estimated_monthly_visits: res_data?.EstimatedMonthlyVisits,
     };
     const complete_data = { url: url_data, metadata };
-    const data = publish_to_queue(complete_data);
+    const data = await publish_to_queue(complete_data);
 
     return {
       status: "success",

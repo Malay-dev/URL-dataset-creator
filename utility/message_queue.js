@@ -1,4 +1,5 @@
 import amqp from "amqplib";
+import { store_data_database } from "../controllers/store_data.js";
 
 const RABBIT_MQ_USER = process.env.RABBIT_MQ_USER;
 const RABBIT_MQ_PASSWORD = process.env.RABBIT_MQ_PASSWORD;
@@ -18,7 +19,7 @@ const connect_to_rabbit_mq = async () => {
     rabbit_mq_channel = await rabbit_mq_conn.createChannel();
     await rabbit_mq_channel.assertQueue(QUEUE_NAME, { durable: false });
     console.log("[server]: Connected to rabbitMQ...");
-    console.log("[server]: Waiting for log entries...");
+    console.log("[server]: Waiting for URL entries...");
     consume_from_queue();
     return rabbit_mq_channel;
   } catch (error) {
@@ -33,13 +34,13 @@ const connect_to_rabbit_mq = async () => {
   }
 };
 
-const publish_to_queue = (log_entry) => {
+const publish_to_queue = (url_entry) => {
   try {
     rabbit_mq_channel.sendToQueue(
       QUEUE_NAME,
-      Buffer.from(JSON.stringify(log_entry))
+      Buffer.from(JSON.stringify(url_entry))
     );
-    console.log("Log entry added to Queue");
+    console.log("URL entry added to Queue");
   } catch (error) {
     console.error(`Error publishing to the queue: ${error.message}`);
   }
@@ -50,9 +51,9 @@ const consume_from_queue = () => {
     rabbit_mq_channel.consume(
       QUEUE_NAME,
       async (message) => {
-        const log_entry = JSON.parse(message.content.toString());
-        console.log(log_entry);
-        console.log("Processing log entry");
+        const url_entry = JSON.parse(message.content.toString());
+        const store_data = store_data_database(url_entry);
+        console.log("Processing URL entry...");
       },
       { noAck: true }
     );

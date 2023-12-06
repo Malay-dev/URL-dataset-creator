@@ -1,7 +1,6 @@
 version: '3'
 services:
   url-dataset-creator-app:
-    image: ghcr.io/puppeteer/puppeteer:latest
     build: 
       context: .
       args:
