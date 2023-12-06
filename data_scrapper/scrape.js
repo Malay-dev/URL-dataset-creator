@@ -3,13 +3,6 @@ import puppeteer from "puppeteer";
 import extract_url_parts from "./extract_url_parts.js";
 import { send_to_queue } from "../controllers/send_data.js";
 
-const browser = await puppeteer.launch({
-  args: ["--no-sandbox"],
-  headless: "new",
-  defaultViewport: null,
-  userDataDir: "./tmp",
-});
-
 let found_links = [];
 
 const is_valid = (link) => {
@@ -23,6 +16,13 @@ const is_valid = (link) => {
 
 const browse = async (url) => {
   try {
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox"],
+      headless: "new",
+      defaultViewport: null,
+      userDataDir: "./tmp",
+    });
+
     const page = await browser.newPage();
     await page.goto(url);
 
