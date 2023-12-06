@@ -5,7 +5,7 @@ const store_data_database = async (url_entry) => {
     const extinguisher = await DataModel.findOne({
       "url.domain_name": url_entry.url.domain_name,
     });
-    console.log(`Extinguisher: ${extinguisher}`);
+    console.log("Updating the url entry...");
     if (extinguisher !== null) {
       const mergedPaths = Array.from(
         new Set([...extinguisher.url.paths, ...url_entry.url.paths])

@@ -31,14 +31,25 @@ const send_to_queue = async (url_data) => {
     const res_data = await get_metadata(url_data?.domain_name);
 
     const metadata = {
-      top_country_shares: res_data?.TopCountryShares,
+      top_country_shares: res_data?.TopCountryShares?.map((countryShare) => ({
+        country: countryShare?.Country,
+        country_code: countryShare?.CountryCode,
+        value: countryShare?.Value,
+      })),
       location: res_data?.CountryRank?.CountryCode,
       global_index: res_data?.GlobalRank?.Rank,
       local_index: res_data?.CountryRank?.Rank,
       category_rank: res_data?.CategoryRank,
       category: res_data?.Category,
       traffic_sources: res_data?.TrafficSources,
-      engagements: res_data?.Engagements,
+      engagements: {
+        bounce_rate: res_data?.Engagements?.BounceRate,
+        month: res_data?.Engagements?.Month,
+        year: res_data?.Engagements?.Year,
+        page_per_visits: res_data?.Engagements?.PagePerVisits,
+        visits: res_data?.Engagements?.Visits,
+        time_on_site: res_data?.Engagements?.TimeOnSite,
+      },
       estimated_monthly_visits: res_data?.EstimatedMonthlyVisits,
     };
     const complete_data = { url: url_data, metadata };

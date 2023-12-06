@@ -20,7 +20,7 @@ const DataSchema = new mongoose.Schema({
     top_country_shares: [
       {
         country: String,
-        country_code: Number,
+        country_code: String,
         value: Number,
       },
     ],
