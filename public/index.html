@@ -2,36 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>URL Typo Corrector</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>URL typo corrector</title>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
-      rel="stylesheet"
-    />
+    <meta name="description" content="URL Typo Corrector" />
+    <meta name="keywords" content="url, typo, corrector, data" />
     <link rel="stylesheet" href="styles.css" />
-    <!-- Link your custom stylesheet -->
   </head>
   <body>
+    <h1>URL Typo Corrector</h1>
     <div class="container">
-      <h2>URL FORM</h2>
       <div class="controls">
         <button id="toggle-auto-refresh">Toggle Auto-Refresh</button>
         <button id="refresh">Refresh Now</button>
       </div>
-      <form action="" method="post">
+      <form id="URL-Form" action="" method="post">
         <p>
           <label for="url">URL</label><br />
           <input type="text" id="url" name="url" size="30" />
         </p>
-        <p>
+        <p id="submit">
           <input type="submit" value="Submit" />
         </p>
       </form>
-      <div></div>
-      <div class="result">
-        <pre><!-- Result will be displayed here --></pre>
-      </div>
     </div>
+
+    <div>
+      <pre><!-- result ---></pre>
+    </div>
+    <table id="URL-Table">
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Message</th>
+          <th>Resource ID</th>
+          <th>TimeStamp</th>
+          <th>Trace ID</th>
+          <th>Span ID</th>
+          <th>Commit</th>
+          <th>MetaData</th>
+        </tr>
+      </thead>
+      <tbody id="URL-Data"></tbody>
+    </table>
+    <script src="scripts.js"></script>
   </body>
-  <script src="./script.js"></script>
 </html>
