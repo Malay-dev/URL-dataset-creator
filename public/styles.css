@@ -90,18 +90,24 @@ input[type="text"] {
 /* Result text */
 pre {
   padding: 10px;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: #ACE1AF;
+  border: 1px solid #dddddd;
   margin-bottom: 20px;
   font-size: 1em;
   overflow-x: auto;
 }
 
+.table-container{
+  width: 100%;
+  overflow-x: scroll;
+}
+
 /* Table styles */
 table {
-  width: 100%;
+  
   border-collapse: collapse;
   margin-bottom: 20px;
+ 
 }
 
 th,
@@ -119,8 +125,8 @@ th {
 /* Pre tag styles */
 pre {
   padding: 10px;
-  background-color: #eee;
-  border: 1px solid #ccc;
+  background-color: #ACE1AF;
+  border: 1px solid #dddddd;
   margin-bottom: 20px;
   overflow-x: auto;
 }

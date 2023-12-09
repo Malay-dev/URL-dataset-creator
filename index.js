@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import { connect_to_rabbit_mq } from "./utility/message_queue.js";
-import browse_router from "./controllers/browse_link.js";
+import browse_router from "./routers/browse_router.js";
 
 dotenv.config();
 

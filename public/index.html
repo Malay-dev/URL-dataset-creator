@@ -15,10 +15,10 @@
         <button id="toggle-auto-refresh">Toggle Auto-Refresh</button>
         <button id="refresh">Refresh Now</button>
       </div>
-      <form id="URL-Form" action="" method="post">
+      <form id="url-form" action="">
         <p>
           <label for="url">URL</label><br />
-          <input type="text" id="url" name="url" size="30" />
+          <input type="text" id="url" name="link" size="30" />
         </p>
         <p id="submit">
           <input type="submit" value="Submit" />
@@ -27,23 +27,32 @@
     </div>
 
     <div>
-      <pre><!-- result ---></pre>
+      <pre id="result-val"><!-- result ---></pre>
     </div>
-    <table id="URL-Table">
-      <thead>
-        <tr>
-          <th>Level</th>
-          <th>Message</th>
-          <th>Resource ID</th>
-          <th>TimeStamp</th>
-          <th>Trace ID</th>
-          <th>Span ID</th>
-          <th>Commit</th>
-          <th>MetaData</th>
-        </tr>
-      </thead>
-      <tbody id="URL-Data"></tbody>
-    </table>
-    <script src="scripts.js"></script>
+    <div class="table-container">
+      <table id="URL-Table">
+        <thead>
+          <tr>
+            <th>protocol</th>
+            <th>domain_name</th>
+            <th>paths</th>
+            <th>parameters</th>
+            <th>fragments</th>
+            <th>top_country_shares</th>
+            <th>location</th>
+            <th>global_index</th>
+            <th>local_index</th>
+            <th>category_rank</th>
+            <th>category</th>
+            <th>traffic_sources</th>
+            <th>engagements</th>
+            <th>estimated_monthly_visits</th>
+          </tr>
+        </thead>
+        <tbody id="url-data"></tbody>
+      </table>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
