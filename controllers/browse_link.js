@@ -16,7 +16,5 @@ const browse_link = async (req, res, next) => {
   }
 };
 
-const browse_router = express.Router();
-browse_router.post("/", browse_link);
 
-export default browse_router;
+export default browse_link;

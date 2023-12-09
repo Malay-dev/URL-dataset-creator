@@ -35,14 +35,7 @@ const DataSchema = new mongoose.Schema({
     ],
     category: String,
     traffic_sources: Object,
-    engagements: {
-      bounce_rate: Number,
-      month: Number,
-      year: Number,
-      page_per_visits: Number,
-      visits: Number,
-      time_on_site: Number,
-    },
+    engagements: Object,
     estimated_monthly_visits: Object,
   },
 });

@@ -42,17 +42,10 @@ const send_to_queue = async (url_data) => {
       category_rank: res_data?.CategoryRank,
       category: res_data?.Category,
       traffic_sources: res_data?.TrafficSources,
-      engagements: {
-        bounce_rate: res_data?.Engagements?.BounceRate,
-        month: res_data?.Engagements?.Month,
-        year: res_data?.Engagements?.Year,
-        page_per_visits: res_data?.Engagements?.PagePerVisits,
-        visits: res_data?.Engagements?.Visits,
-        time_on_site: res_data?.Engagements?.TimeOnSite,
-      },
+      engagements: res_data?.Engagments,
       estimated_monthly_visits: res_data?.EstimatedMonthlyVisits,
     };
-    const complete_data = { url: url_data, metadata };
+    const complete_data = { url: url_data, metadata: metadata };
     const data = await publish_to_queue(complete_data);
 
     return {
