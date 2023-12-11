@@ -33,12 +33,11 @@ const browse = async (url) => {
       const anchors = Array.from(document.querySelectorAll("a"));
       return anchors.map((anchor) => anchor.href.trim());
     });
-
+    console.log(links);
     for (const link of links) {
       if (!found_links.includes(link) && is_valid(link)) {
         found_links.push(link);
         const response = await send_to_queue(extract_url_parts(link));
-        console.log(response);
       }
       await new Promise((resolve) => setTimeout(resolve, 2000));
     }

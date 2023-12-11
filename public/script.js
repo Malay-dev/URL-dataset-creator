@@ -51,6 +51,7 @@ const result_val = document.getElementById("result-val");
 
 urlForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+  result_val.innerHTML = "";
   const formData = new FormData(urlForm);
   console.log(Object.fromEntries(formData));
   const body = Object.fromEntries(formData);

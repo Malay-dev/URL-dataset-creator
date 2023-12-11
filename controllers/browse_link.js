@@ -1,5 +1,3 @@
-import express from "express";
-
 import { browse } from "../data_scrapper/scrape.js";
 
 const browse_link = async (req, res, next) => {
@@ -15,6 +13,5 @@ const browse_link = async (req, res, next) => {
     });
   }
 };
-
 
 export default browse_link;
