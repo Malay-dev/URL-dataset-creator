@@ -1,4 +1,6 @@
 let intervalId = null;
+let mode = "normal";
+
 window.addEventListener("load", async () => {
   const initial_urls = await fetch_urls();
   console.log(initial_urls);
@@ -52,23 +54,38 @@ const result_val = document.getElementById("result-val");
 urlForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   result_val.innerHTML = "";
-  const formData = new FormData(urlForm);
-  console.log(Object.fromEntries(formData));
-  const body = Object.fromEntries(formData);
-  options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  };
-  const response = await fetch(`/browse`, options);
-  if (!response.ok) {
-    throw new Error("Network response was not ok.");
+  if (mode === "normal") {
+    const formData = new FormData(urlForm);
+    console.log(Object.fromEntries(formData));
+    const body = Object.fromEntries(formData);
+    options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    };
+    const response = await fetch(`/browse`, options);
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+    const data = await response.json();
+    console.log(data);
+    result_val.innerHTML = JSON.stringify(data);
+  } else {
+    const formData = new FormData();
+    const fileInput = document.getElementById("file");
+    formData.append("file", fileInput.files[0]);
+    console.log(formData.get("file"));
+    options = {
+      method: "POST",
+      body: formData.get("file"),
+    };
+    const response = await fetch(`/file/`, options);
+    const data = await response.json();
+    console.log(data);
+    result_val.innerHTML = JSON.stringify(data);
   }
-  const data = await response.json();
-  console.log(data);
-  result_val.innerHTML = JSON.stringify(data);
 });
 
 function renderData(data) {
@@ -95,3 +112,20 @@ function renderData(data) {
     url_data_element.appendChild(row);
   });
 }
+const toggleButton = document.getElementById("use-browser-history");
+const normalForm = document.getElementById("normal-form");
+const uploadFileForm = document.getElementById("upload-file-form");
+
+toggleButton.addEventListener("click", () => {
+  if (normalForm.style.display === "none") {
+    normalForm.style.display = "block";
+    uploadFileForm.style.display = "none";
+    toggleButton.textContent = "Use Browser History";
+    mode = "normal";
+  } else {
+    normalForm.style.display = "none";
+    uploadFileForm.style.display = "block";
+    toggleButton.textContent = "Use Normal Form";
+    mode = "file-upload-mode";
+  }
+});
