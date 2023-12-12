@@ -86,11 +86,13 @@ To run the log ingestor and query interface, you need Docker installed on your s
      - Use HTTP GET requests to the `/browse/url_data` to get the current database stored URLs.
      - Example GET request: `http://localhost:3000/browse/url_data`
 
-     Example images
+     ![image](https://github.com/Malay-dev/URL-dataset-creator/assets/91375797/882f1985-0eb7-44e0-8637-a960170e0c8d)
+
 
    - **Web UI:**
      - Access the web UI at [http://localhost:3000](http://localhost:3000) in your browser.
        ![image](https://github.com/Malay-dev/URL-dataset-creator/assets/91375797/05d72c1a-4b29-4869-bdbc-f7b0937cd2ac)
+       ![image](https://github.com/Malay-dev/URL-dataset-creator/assets/91375797/0f5290e7-2946-4004-9e4c-566be2b88491)
 
      - Use this extension https://chromewebstore.google.com/detail/export-historybookmarks-t/dcoegfodcnjofhjfbhegcgjgapeichlf to export your bookmarks/browser history in a _JSON format_
 
