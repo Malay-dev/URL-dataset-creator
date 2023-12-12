@@ -1,11 +1,4 @@
-<div align="center">
 
-<a href="">[![Contributors][contributors-shield]][contributors-url]</a>
-<a href="">[![Forks][forks-shield]][forks-url]</a>
-<a href="">[![Stargazers][stars-shield]][stars-url]</a>
-<a href="">[![MIT License][license-shield]][license-url]</a>
-
-</div>
 
 <br />
 <div align="center">
@@ -60,11 +53,11 @@ To run the log ingestor and query interface, you need Docker installed on your s
    ```
 2. **Set the Enviornment Variables** - change .env.example &#8594; .env - Get MongoDB credentials
    ```bash
-   		PORT=3000
-   		MONGO_USER="root"
-   		MONGO_PASSWORD="example"
-   		RABBIT_MQ_USER="root"
-   		RABBIT_MQ_PASSWORD="example"
+    PORT=3000
+    MONGO_USER="root"
+    MONGO_PASSWORD="example"
+    RABBIT_MQ_USER="root"
+    RABBIT_MQ_PASSWORD="example"
    ```
 3. **Start the containers:**
    ```bash
@@ -76,12 +69,13 @@ To run the log ingestor and query interface, you need Docker installed on your s
    ```bash
    docker logs -f url_dataset_creator-url-dataset-creator-app-1
    ```
-   Terminal Image
+   ![image](https://github.com/Malay-dev/URL-dataset-creator/assets/91375797/b65cca78-4431-403b-a582-93d4af863ca9)
+
 5. **Interact with the System:**
 
    - **HTTP Requests:**
 
-     - Make HTTP POST requests to the `/browse` endpoint to submit the url to be crawled.
+     - Make HTTP POST requests to the `/browse` endpoint to submit the URL to be crawled.
        ```bash
        - POST request
        - Body:
@@ -89,17 +83,22 @@ To run the log ingestor and query interface, you need Docker installed on your s
            "link": "https://www.google.com/"
          }
        ```
-     - Use HTTP GET requests to the `/browse/url_data` to get the current database stored urls.
+     - Use HTTP GET requests to the `/browse/url_data` to get the current database stored URLs.
      - Example GET request: `http://localhost:3000/browse/url_data`
 
      Example images
 
    - **Web UI:**
      - Access the web UI at [http://localhost:3000](http://localhost:3000) in your browser.
-       Example Image
-     - Use this extension https://chromewebstore.google.com/detail/export-historybookmarks-t/dcoegfodcnjofhjfbhegcgjgapeichlf to export your bookmarks/browser history in a _json format_
-     - Upload this .json file to store those urls.
-       Example Image
+       ![image](https://github.com/Malay-dev/URL-dataset-creator/assets/91375797/05d72c1a-4b29-4869-bdbc-f7b0937cd2ac)
+
+     - Use this extension https://chromewebstore.google.com/detail/export-historybookmarks-t/dcoegfodcnjofhjfbhegcgjgapeichlf to export your bookmarks/browser history in a _JSON format_
+
+       ![image](https://github.com/Malay-dev/URL-dataset-creator/assets/91375797/83af34ea-a015-44df-b69e-bf38f22029b6)
+
+     - Upload this .json file to store those URLs.
+       ![image](https://github.com/Malay-dev/URL-dataset-creator/assets/91375797/3913adf1-b159-45fa-bc64-eca220a4c14a)
+
 
 6. **Stopping and Cleaning Up**
 
@@ -109,14 +108,15 @@ To run the log ingestor and query interface, you need Docker installed on your s
    docker-compose down -v
    ```
 
-   This command stops and removes the containers. If you want to also delete the volumes and remove all data stored in the database, you can use the -v flag:
+   This command stops and removes the containers. If you want also to delete the volumes and remove all data stored in the database, you can use the -v flag:
 
 ## Troubleshooting
 
 If you encounter any issues or have questions, consider the following steps:
 
 - Check the error on container - url_dataset_creator-url-dataset-creator-app-1
-  Error image
+  ![image](https://github.com/Malay-dev/URL-dataset-creator/assets/91375797/62a772f3-69fd-42fb-a0df-cedb2b7e5595)
+
   ```bash
       docker-compose down -v
   ```
