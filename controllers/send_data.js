@@ -28,6 +28,9 @@ const get_metadata = async (domain) => {
 
 const send_to_queue = async (url_data) => {
   try {
+    if (url_data?.domain_name === "") {
+      return "No domain name";
+    }
     const res_data = await get_metadata(url_data?.domain_name);
 
     const metadata = {
