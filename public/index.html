@@ -13,13 +13,25 @@
     <div class="container">
       <div class="controls">
         <button id="toggle-auto-refresh">Toggle Auto-Refresh</button>
+        <button id="use-browser-history">Use Browser History</button>
         <button id="refresh">Refresh Now</button>
       </div>
       <form id="url-form" action="">
-        <p>
-          <label for="url">URL</label><br />
-          <input type="text" id="url" name="link" size="30" />
-        </p>
+        <div id="normal-form">
+          <p>
+            <label for="url">URL</label><br />
+            <input type="text" id="url" name="link" size="30" />
+          </p>
+        </div>
+        <div id="upload-file-form">
+          <p>
+            <label for="file"
+              >Upload the Browser History/Bookmarks .json file</label
+            >
+            <input type="file" name="file" id="file" accept=".json" />
+          </p>
+        </div>
+
         <p id="submit">
           <input type="submit" value="Submit" />
         </p>

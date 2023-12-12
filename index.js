@@ -1,9 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
+import bodyParser from "body-parser";
 import { connect_to_rabbit_mq } from "./utility/message_queue.js";
 import browse_router from "./routers/browse_router.js";
+import file_router from "./routers/file_router.js";
 
 dotenv.config();
 
@@ -23,6 +24,8 @@ const url_logger = (upperCase) => {
   };
 };
 app.enable("trust proxy");
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(url_logger(true));
 app.use(express.json());
 app.use(express.static("public"));
@@ -44,6 +47,7 @@ connect_to_database();
 connect_to_rabbit_mq();
 
 app.use("/browse", browse_router);
+app.use("/file", file_router);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
