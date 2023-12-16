@@ -127,3 +127,5 @@ If you encounter any issues or have questions, consider the following steps:
   ```bash
   docker-compose up -d --build
   ```
+- ![image](https://github.com/Malay-dev/URL-dataset-creator/assets/91375797/166f91a4-a6c6-462f-973f-f5fa1cc3579e)
+  - Restart the server
