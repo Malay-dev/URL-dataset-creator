@@ -23,6 +23,7 @@ const get_metadata = async (domain) => {
     headers: headers,
     params: params,
   });
+
   return res.data;
 };
 
@@ -48,8 +49,11 @@ const send_to_queue = async (url_data) => {
       engagements: res_data?.Engagments,
       estimated_monthly_visits: res_data?.EstimatedMonthlyVisits,
     };
-    const complete_data = { url: url_data, metadata: metadata };
-    const data = await publish_to_queue(complete_data);
+    let complete_data = {};
+    if (metadata.global_index !== null) {
+      complete_data = { url: url_data, metadata: metadata };
+      const data = await publish_to_queue(complete_data);
+    }
 
     return {
       status: "success",
