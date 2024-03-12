@@ -44,11 +44,11 @@ Puppeteer's strength lies in its flexibility and the ability to execute complex 
 
 #### Installation
 
-To run the log ingestor and query interface, you need Docker installed on your system. If you don't have Docker installed, follow the instructions provided [here](https://docs.docker.com/get-docker/) to install Docker for your operating system.
+To run the URL Dataset Creator, you need Docker installed on your system. If you don't have Docker installed, follow the instructions provided [here](https://docs.docker.com/get-docker/) to install Docker for your operating system.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/log-ingestor.git
+   git clone https://github.com/your-username/url-dataset-creator.git
    cd url-dataset-creator
    ```
 2. **Set the Enviornment Variables** - change .env.example &#8594; .env - Get MongoDB credentials
