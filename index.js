@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 import bodyParser from "body-parser";
 import { connect_to_rabbit_mq } from "./utility/message_queue.js";
 import browse_router from "./routers/browse_router.js";
@@ -25,6 +26,7 @@ const url_logger = (upperCase) => {
   };
 };
 app.enable("trust proxy");
+app.use(cors())
 app.use(bodyParser.json({ limit: "200mb" }));
 app.use(bodyParser.urlencoded({ limit: "200mb", extended: true }));
 app.use(url_logger(true));
