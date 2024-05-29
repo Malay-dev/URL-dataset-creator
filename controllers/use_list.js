@@ -1,10 +1,12 @@
 import { send_to_queue } from "./send_data.js";
 import extract_url_parts from "../data_scrapper/extract_url_parts.js";
 const use_list = async (req, res) => {
-  let data = req.body;
+  let data = req.body.data;
+  console.log(data);
   try {
     for (var index in data) {
       let url = data[index];
+      url = "https://" + url;
       const url_obj = extract_url_parts(url);
       await send_to_queue(url_obj);
       await new Promise((resolve) => setTimeout(resolve, 2000));
