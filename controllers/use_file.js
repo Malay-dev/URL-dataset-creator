@@ -1,8 +1,8 @@
 import { send_to_queue } from "./send_data.js";
-import extract_url_parts from "../data_scrapper/extract_url_parts.js";
+import extract_url_parts from "../data_scrapper/extract_url_parts.js"; 
 const use_file = async (req, res) => {
   let data = req.body;
-  data = data.slice(460000, 500000 + 1);
+  data = data.slice(21117, 500000 + 1);
   try {
     for (var index in data) {
       let url = data[index].url;

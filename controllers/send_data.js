@@ -61,7 +61,7 @@ const send_to_queue = async (url_data) => {
       result: complete_data,
     };
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return { status: "failed", error: error };
   }
 };
